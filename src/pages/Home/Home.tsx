@@ -10,11 +10,7 @@ const Home: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return (
-    <>
-      <h1>NEWS GUIDE</h1>
-    </>
-  )
+  return <h1>NEWS GUIDE</h1>
 }
 
 export default memo(Home)
