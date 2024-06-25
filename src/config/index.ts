@@ -14,9 +14,9 @@ export const config = {
   api: {
     newYorkTimesApi: {
       baseURL: import.meta.env.VITE_BASE_URL,
-      apiKey: import.meta.env.VITE_API_KEY
-    }
-  }
+      apiKey: import.meta.env.VITE_API_KEY,
+    },
+  },
 }
 
 export const useConfig = (): typeof config => config

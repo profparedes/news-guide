@@ -5,7 +5,7 @@ import { useNewYorkTimes } from 'context/NewYorkTimes'
 
 const Home: React.FC = () => {
   const setTitle = useTitle()
-  const {stories, fetchNewYorkTimesStories} = useNewYorkTimes()
+  const { stories, fetchNewYorkTimesStories } = useNewYorkTimes()
 
   useEffect(() => {
     setTitle('Home')

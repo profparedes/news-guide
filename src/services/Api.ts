@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { config } from 'config';
+import axios from 'axios'
+import { config } from 'config'
 
 const Api = axios.create({
-    baseURL: config.api.newYorkTimesApi.baseURL
+  baseURL: config.api.newYorkTimesApi.baseURL,
 })
 
 // Api.interceptors.request.use((config) => {
@@ -11,4 +11,4 @@ const Api = axios.create({
 //     return config;
 // });
 
-export default Api;
+export default Api

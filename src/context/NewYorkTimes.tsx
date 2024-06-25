@@ -1,13 +1,19 @@
-import { NewYorkTimesStoriesType } from 'Types/newYorkTimes';
-import { config } from 'config';
-import { createContext, useCallback, useContext, useMemo, useState } from 'react'
-import Api from 'services/Api';
+import { NewYorkTimesStoriesType } from 'Types/newYorkTimes'
+import { config } from 'config'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react'
+import Api from 'services/Api'
 
 interface IContextProps {
-  stories: NewYorkTimesStoriesType[];
+  stories: NewYorkTimesStoriesType[]
   isLoading: boolean
   error: string | null
-  fetchNewYorkTimesStories: (section: string) => void;
+  fetchNewYorkTimesStories: (section: string) => void
 }
 
 interface INewYorkTimesProps {
@@ -19,28 +25,27 @@ export const ReactContext = createContext<IContextProps>({} as IContextProps)
 export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
   children,
 }) => {
-  const [ stories, setStories ] = useState<NewYorkTimesStoriesType[]>([])
-  const [ isLoading, setIsLoading ] = useState(false)
-  const [ error, setError ] = useState<string | null>(null);
+  const [stories, setStories] = useState<NewYorkTimesStoriesType[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const fetchNewYorkTimesStories = useCallback(async (section: string) => {
-    setIsLoading(true);
-    setError(null);
+    setIsLoading(true)
+    setError(null)
 
     try {
       const response = await Api.get(`/${section}.json`, {
         params: {
-          'api-key': config.api.newYorkTimesApi.apiKey
-        }
-      });
-      setStories(response.data.results);
+          'api-key': config.api.newYorkTimesApi.apiKey,
+        },
+      })
+      setStories(response.data.results)
     } catch {
-      setError('Error to fetching New York Times Stories');
+      setError('Error to fetching New York Times Stories')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }, [])
-
 
   return (
     <ReactContext.Provider
@@ -49,14 +54,9 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
           stories,
           isLoading,
           error,
-          fetchNewYorkTimesStories
+          fetchNewYorkTimesStories,
         }),
-        [
-          stories,
-          isLoading,
-          error,
-          fetchNewYorkTimesStories
-        ],
+        [stories, isLoading, error, fetchNewYorkTimesStories],
       )}
     >
       {children}
