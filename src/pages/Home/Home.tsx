@@ -1,19 +1,29 @@
 import { memo, useEffect } from 'react'
 
 import useTitle from 'hooks/useTitle'
-import { useNewYorkTimes } from 'context/NewYorkTimes'
+import { useNewYorkTimes } from 'context/NewYorkTimesContext'
 
 const Home: React.FC = () => {
   const setTitle = useTitle()
-  const { stories, fetchNewYorkTimesStories } = useNewYorkTimes()
+  const {
+    businessStories,
+    healthStories,
+    moviesStories,
+    politicsStories,
+    sportsStories,
+    isLoadingBusiness,
+    isLoadingHealth,
+    isLoadingMovies,
+    isLoadingPolitics,
+    isLoadingSports,
+  } = useNewYorkTimes()
 
   useEffect(() => {
     setTitle('Home')
-    fetchNewYorkTimesStories('arts')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log({ stories })
+  console.log({ businessStories })
 
   return <h1>NEWS GUIDE</h1>
 }
