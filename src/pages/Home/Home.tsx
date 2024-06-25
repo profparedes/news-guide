@@ -23,7 +23,18 @@ const Home: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log({ businessStories })
+  console.log({
+    businessStories,
+    healthStories,
+    moviesStories,
+    politicsStories,
+    sportsStories,
+    isLoadingBusiness,
+    isLoadingHealth,
+    isLoadingMovies,
+    isLoadingPolitics,
+    isLoadingSports,
+  })
 
   return <h1>NEWS GUIDE</h1>
 }

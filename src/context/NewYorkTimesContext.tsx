@@ -174,6 +174,7 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
     fetchNewYorkTimesMoviesStories()
     fetchNewYorkTimesPoliticsStories()
     fetchNewYorkTimesSportsStories()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
