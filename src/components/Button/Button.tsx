@@ -1,4 +1,4 @@
-import { memo, PropsWithChildren, ReactElement } from 'react'
+import { memo } from 'react'
 import { RoundedButton } from './style'
 
 interface IButtonProps {

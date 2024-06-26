@@ -3,12 +3,12 @@ import { memo, useEffect } from 'react'
 import useTitle from 'hooks/useTitle'
 import { useNewYorkTimes } from 'context/NewYorkTimesContext'
 import Container from '@mui/material/Container'
-import { HeaderBanner } from './style'
 import Header from 'components/Header'
 import { Box, Typography } from '@mui/material'
 import Button from 'components/Button'
 import useWindowSize from 'hooks/useWindowSize'
 import { FaWhatsapp } from 'react-icons/fa'
+import { HeaderBanner } from './style'
 
 const Home: React.FC = () => {
   const setTitle = useTitle()

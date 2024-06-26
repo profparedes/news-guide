@@ -3,8 +3,6 @@ import { memo, useCallback } from 'react'
 import { useConfig } from 'config'
 import { useTranslation } from 'react-i18next'
 
-import Box from 'components/Box'
-
 const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation()
   const { i18n: i18nConfig } = useConfig()
@@ -16,7 +14,7 @@ const LanguageSwitcher: React.FC = () => {
 
   return (
     <>
-      <Box gap={5} direction="row">
+      <div>
         {i18nConfig.supportedLanguages.map((lng) => (
           <button
             key={lng}
@@ -27,7 +25,7 @@ const LanguageSwitcher: React.FC = () => {
             {lng}
           </button>
         ))}
-      </Box>
+      </div>
       <p>language: {i18n.language}</p>
     </>
   )

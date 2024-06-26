@@ -1,5 +1,4 @@
 import { memo, useState } from 'react'
-import { HeaderContainer, MobileMenu } from './style'
 import { IoSearchSharp } from 'react-icons/io5'
 import {
   FaFacebook,
@@ -14,6 +13,7 @@ import { HiOutlineMenu } from 'react-icons/hi'
 import EzoomLogo from 'assets/ezoom-logo.png'
 import { Box, Drawer, Link } from '@mui/material'
 import useWindowSize from 'hooks/useWindowSize'
+import { HeaderContainer, MobileMenu } from './style'
 
 const Header: React.FC = () => {
   const { gteMd } = useWindowSize()
@@ -31,9 +31,9 @@ const Header: React.FC = () => {
           <Box display="flex" alignItems="center" gap={3}>
             {gteMd && (
               <Box display="flex" gap={3} color="#fff">
-                <Link href="#">About</Link>
-                <Link href="#">News</Link>
-                <Link href="#">Contact</Link>
+                <Link>About</Link>
+                <Link>News</Link>
+                <Link>Contact</Link>
               </Box>
             )}
             {!gteMd && (
@@ -44,22 +44,22 @@ const Header: React.FC = () => {
             <IoSearchSharp color={gteMd ? '#42B073' : '#fff'} />
             {gteMd && (
               <Box display="flex" gap={1} color="#fff">
-                <Link href="#">
+                <Link>
                   <FaFacebook />
                 </Link>
-                <Link href="#">
+                <Link>
                   <FaInstagram />
                 </Link>
-                <Link href="#">
+                <Link>
                   <FaYoutube />
                 </Link>
-                <Link href="#">
+                <Link>
                   <FaTiktok />
                 </Link>
-                <Link href="#">
+                <Link>
                   <FaLinkedin />
                 </Link>
-                <Link href="#">
+                <Link>
                   <FaMicrophone />
                 </Link>
               </Box>
@@ -75,9 +75,9 @@ const Header: React.FC = () => {
           width={200}
           padding={3}
         >
-          <Link href="#">About</Link>
-          <Link href="#">News</Link>
-          <Link href="#">Contact</Link>
+          <Link>About</Link>
+          <Link>News</Link>
+          <Link>Contact</Link>
         </Box>
       </Drawer>
     </>
