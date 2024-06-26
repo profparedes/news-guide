@@ -14,5 +14,5 @@ export type NewYorkTimesStoriesType = {
   url: string
   published_date: string
   byline: string
-  multmedia: StoriesMultimediaType[]
+  multimedia: StoriesMultimediaType[]
 }
