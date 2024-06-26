@@ -77,6 +77,7 @@ const Home: React.FC = () => {
           display="flex"
           padding="8px 8px 9px 8px"
           borderRadius={5}
+          marginLeft="auto"
         >
           <FaWhatsapp color="#fff" size={24} />
         </Box>
