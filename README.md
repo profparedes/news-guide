@@ -1,98 +1,50 @@
-# React 18, Vite 5, Typescript 5, Vitest 1, Eslint 8, Prettier 3, EditorConfig
+# New Guide
 
-A starter for React with Typescript with the blazing fast Vite, strong Vitest framework and all static code testing with Eslint and formatting with Prettier and EditorConfig.
+This is a web application that allows users to explore New York Times news. The project was developed using [Vite](https://vitejs.dev/), [Yarn](https://yarnpkg.com/), [React.js](https://reactjs.org/) and [TypeScript](https://www.typescriptlang.org/).
 
-## Requirements
+The project can be viewed at [https://profparedes-newsguide.netlify.app](https://profparedes-newsguide.netlify.app).
 
-- [Node.js](https://nodejs.org/) v18 (recommended to install via nvm)
+## Prerequisites
 
-## Installation & run
+To run this project, you need to have [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/) installed on your computer.
 
-1. Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) extensions for VS Code. **Do not install the Prettier extension** (Prettier will be managed by ESLint)
+## Setup
 
-2. Clone the repo and run:
+Before you start, you will need to get your Marvel API keys:
+
+1. Sign up on the [New York Times API](https://developer.nytimes.com/apis).
+2. After logging in, go to "My Apps" to get your public API key.
+3. Clone this repository on your computer.
+4. At the project root, copy the `.env.example` file and rename the copy to `.env`.
+5. Open the `.env` file and replace `<your_api_key>` with your New York Times API keys, respectively.
 
 ```
-cp .env.example .env
+VITE_API_KEY=<your_api_key>
 ```
+
+## Installation
+
+At the project root, run the following command to install all necessary dependencies:
 
 ```
 yarn
 ```
 
+## Running
+
+To run the app, use the following command:
+
 ```
 yarn dev
 ```
 
-## Test
+This will start the development server on port 3000. Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app.
 
-```
-yarn test
-```
 
-To see on Vitest UI
+## Contributions
 
-```
-yarn test --ui
-```
+Contributions are welcome. Feel free to open an issue or make a pull request.
 
-To run with coverage reports (the results will output to `/coverage/index.html`)
+## License
 
-```
-yarn coverage
-```
-
-## Troubleshooting
-
-Error:
-
-```
-Cannot find module 'node:path'
-```
-
-Solution: Use Node.js v18
-
----
-
-Error:
-
-```
-Command failed: node /path/to/project/node_modules/esbuild/bin/esbuild --version dyld: Symbol not found: \_SecTrustEvaluateWithError
-```
-
-Solution:
-
-1. Stop using `npm` or `yarn` for this project
-2. Install [pnpm](https://pnpm.io)
-3. Remove `node_modules`
-4. Remove `yarn.lock` (if exists)
-5. Remove `package-lock.json` (if exists)
-6. Add the following to `package.json`
-
-```
-"devDependencies": {
-    // ... other dependencies
-    "esbuild-wasm":"latest",
-},
-"pnpm": {
-    "overrides": {
-        "esbuild":"npm:esbuild-wasm@latest"
-    }
-},
-```
-
-Download the dependencies:
-
-```
-pnpm i
-```
-
-Run the project:
-
-```
-pnpm run dev
-```
-
-## Credits
-
-This is a fork of [https://github.com/TheSwordBreaker/vite-reactts-eslint-prettier](https://github.com/TheSwordBreaker/vite-reactts-eslint-prettier)
+This project is licensed under the MIT license.
