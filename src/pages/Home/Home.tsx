@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { memo, useEffect, useMemo } from 'react'
 
 import useTitle from 'hooks/useTitle'
@@ -10,9 +11,18 @@ import useWindowSize from 'hooks/useWindowSize'
 import { FaWhatsapp } from 'react-icons/fa'
 import LatestNewsCard from 'components/LatestNewsCard'
 import CategoryCard from 'components/CategoryCard'
-import { CategoriesSection, HeaderBanner } from './style'
+import Slider from 'react-slick'
+import { CategoriesSection, CustomDots, HeaderBanner } from './style'
 
 const colors = ['#42B073', '#24BEFF', '#FF632D', '#FFD400', '#9B836B']
+
+const settings = {
+  dots: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  customPaging: () => <CustomDots />,
+}
 
 const Home: React.FC = () => {
   const setTitle = useTitle()
@@ -24,7 +34,6 @@ const Home: React.FC = () => {
     moviesStories,
     politicsStories,
     sportsStories,
-    isLoading,
     isLoadingBusiness,
     isLoadingTechnology,
     isLoadingMovies,
@@ -102,7 +111,11 @@ const Home: React.FC = () => {
           </Box>
         </Container>
       </HeaderBanner>
-      <Box display="flex">{!isLoading && lastedNewsMap}</Box>
+      {gteMd ? (
+        <Box display="flex">{lastedNewsMap}</Box>
+      ) : (
+        <Slider {...settings}>{lastedNewsMap}</Slider>
+      )}
       <CategoriesSection>
         <Container>
           <Box display="flex" flexDirection="column" gap={4}>
