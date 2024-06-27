@@ -106,46 +106,46 @@ const Home: React.FC = () => {
       <CategoriesSection>
         <Container>
           <Box display="flex" flexDirection="column" gap={4}>
-          {!isLoadingBusiness && businessStories && (
-            <CategoryCard
-              title="Business"
-              color="#42B073"
-              description="Latest market trends, economic insights, and corporate developments."
-              storiesData={businessStories}
-            />
-          )}
-          {!isLoadingTechnology && technologyStories && (
-            <CategoryCard
-              title="Science"
-              color="#24BEFF"
-              description="Explore groundbreaking discoveries and cutting-edge research in science today."
-              storiesData={technologyStories}
-            />
-          )}
-          {!isLoadingMovies && moviesStories && (
-            <CategoryCard
-              title="Movies"
-              color="#FF632D"
-              description="Discover the latest films, reviews, and entertainment news."
-              storiesData={moviesStories}
-            />
-          )}
-          {!isLoadingPolitics && politicsStories && (
-            <CategoryCard
-              title="Politics"
-              color="#FFD400"
-              description="Insightful analysis and updates on global political developments and policies."
-              storiesData={politicsStories}
-            />
-          )}
-          {!isLoadingSports && sportsStories && (
-            <CategoryCard
-              title="Sports"
-              color="#9B836B"
-              description="Score updates, athlete profiles, and game highlights from around the world."
-              storiesData={sportsStories}
-            />
-          )}
+            {!isLoadingBusiness && businessStories && (
+              <CategoryCard
+                title="Business"
+                color="#42B073"
+                description="Latest market trends, economic insights, and corporate developments."
+                storiesData={businessStories}
+              />
+            )}
+            {!isLoadingTechnology && technologyStories && (
+              <CategoryCard
+                title="Science"
+                color="#24BEFF"
+                description="Explore groundbreaking discoveries and cutting-edge research in science today."
+                storiesData={technologyStories}
+              />
+            )}
+            {!isLoadingMovies && moviesStories && (
+              <CategoryCard
+                title="Movies"
+                color="#FF632D"
+                description="Discover the latest films, reviews, and entertainment news."
+                storiesData={moviesStories}
+              />
+            )}
+            {!isLoadingPolitics && politicsStories && (
+              <CategoryCard
+                title="Politics"
+                color="#FFD400"
+                description="Insightful analysis and updates on global political developments and policies."
+                storiesData={politicsStories}
+              />
+            )}
+            {!isLoadingSports && sportsStories && (
+              <CategoryCard
+                title="Sports"
+                color="#9B836B"
+                description="Score updates, athlete profiles, and game highlights from around the world."
+                storiesData={sportsStories}
+              />
+            )}
           </Box>
         </Container>
       </CategoriesSection>

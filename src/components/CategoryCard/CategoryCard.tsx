@@ -85,7 +85,7 @@ const CategoryCard: React.FC<ICategoryCardProps> = ({
             ))
             .slice(0, 3)
         : null,
-    [storiesData],
+    [storiesData, color],
   )
 
   console.log({ cardMap })

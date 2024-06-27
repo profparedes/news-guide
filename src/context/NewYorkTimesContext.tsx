@@ -40,9 +40,9 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
   const [businessStories, setBusinessStories] = useState<
     NewYorkTimesStoriesType[]
   >([])
-  const [technologyStories, setTechnologyStories] = useState<NewYorkTimesStoriesType[]>(
-    [],
-  )
+  const [technologyStories, setTechnologyStories] = useState<
+    NewYorkTimesStoriesType[]
+  >([])
   const [moviesStories, setMoviesStories] = useState<NewYorkTimesStoriesType[]>(
     [],
   )
