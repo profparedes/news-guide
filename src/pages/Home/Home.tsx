@@ -9,7 +9,8 @@ import Button from 'components/Button'
 import useWindowSize from 'hooks/useWindowSize'
 import { FaWhatsapp } from 'react-icons/fa'
 import LatestNewsCard from 'components/LatestNewsCard'
-import { HeaderBanner } from './style'
+import CategoryCard from 'components/CategoryCard'
+import { CategoriesSection, HeaderBanner } from './style'
 
 const colors = ['#42B073', '#24BEFF', '#FF632D', '#FFD400', '#9B836B']
 
@@ -19,13 +20,13 @@ const Home: React.FC = () => {
   const {
     stories,
     businessStories,
-    healthStories,
+    technologyStories,
     moviesStories,
     politicsStories,
     sportsStories,
     isLoading,
     isLoadingBusiness,
-    isLoadingHealth,
+    isLoadingTechnology,
     isLoadingMovies,
     isLoadingPolitics,
     isLoadingSports,
@@ -37,20 +38,6 @@ const Home: React.FC = () => {
     fetchNewYorkTimesStories('world')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  console.log({
-    stories,
-    businessStories,
-    healthStories,
-    moviesStories,
-    politicsStories,
-    sportsStories,
-    isLoadingBusiness,
-    isLoadingHealth,
-    isLoadingMovies,
-    isLoadingPolitics,
-    isLoadingSports,
-  })
 
   const lastedNewsMap = useMemo(
     () =>
@@ -116,6 +103,52 @@ const Home: React.FC = () => {
         </Container>
       </HeaderBanner>
       <Box display="flex">{!isLoading && lastedNewsMap}</Box>
+      <CategoriesSection>
+        <Container>
+          <Box display="flex" flexDirection="column" gap={4}>
+          {!isLoadingBusiness && businessStories && (
+            <CategoryCard
+              title="Business"
+              color="#42B073"
+              description="Latest market trends, economic insights, and corporate developments."
+              storiesData={businessStories}
+            />
+          )}
+          {!isLoadingTechnology && technologyStories && (
+            <CategoryCard
+              title="Science"
+              color="#24BEFF"
+              description="Explore groundbreaking discoveries and cutting-edge research in science today."
+              storiesData={technologyStories}
+            />
+          )}
+          {!isLoadingMovies && moviesStories && (
+            <CategoryCard
+              title="Movies"
+              color="#FF632D"
+              description="Discover the latest films, reviews, and entertainment news."
+              storiesData={moviesStories}
+            />
+          )}
+          {!isLoadingPolitics && politicsStories && (
+            <CategoryCard
+              title="Politics"
+              color="#FFD400"
+              description="Insightful analysis and updates on global political developments and policies."
+              storiesData={politicsStories}
+            />
+          )}
+          {!isLoadingSports && sportsStories && (
+            <CategoryCard
+              title="Sports"
+              color="#9B836B"
+              description="Score updates, athlete profiles, and game highlights from around the world."
+              storiesData={sportsStories}
+            />
+          )}
+          </Box>
+        </Container>
+      </CategoriesSection>
     </>
   )
 }

@@ -14,3 +14,7 @@ export const HeaderBanner = styled.div`
     background-position: center;
   }
 `
+
+export const CategoriesSection = styled.div`
+  padding: 2.5rem 0;
+`

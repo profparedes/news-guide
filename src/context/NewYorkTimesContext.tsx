@@ -13,13 +13,13 @@ import Api from 'services/Api'
 interface IContextProps {
   stories: NewYorkTimesStoriesType[]
   businessStories: NewYorkTimesStoriesType[]
-  healthStories: NewYorkTimesStoriesType[]
+  technologyStories: NewYorkTimesStoriesType[]
   moviesStories: NewYorkTimesStoriesType[]
   politicsStories: NewYorkTimesStoriesType[]
   sportsStories: NewYorkTimesStoriesType[]
   isLoading: boolean
   isLoadingBusiness: boolean
-  isLoadingHealth: boolean
+  isLoadingTechnology: boolean
   isLoadingMovies: boolean
   isLoadingPolitics: boolean
   isLoadingSports: boolean
@@ -40,7 +40,7 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
   const [businessStories, setBusinessStories] = useState<
     NewYorkTimesStoriesType[]
   >([])
-  const [healthStories, setHealthStories] = useState<NewYorkTimesStoriesType[]>(
+  const [technologyStories, setTechnologyStories] = useState<NewYorkTimesStoriesType[]>(
     [],
   )
   const [moviesStories, setMoviesStories] = useState<NewYorkTimesStoriesType[]>(
@@ -54,7 +54,7 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
   )
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingBusiness, setIsLoadingBusiness] = useState(false)
-  const [isLoadingHealth, setIsLoadingHealth] = useState(false)
+  const [isLoadingTechnology, setIsLoadingTechnology] = useState(false)
   const [isLoadingMovies, setIsLoadingMovies] = useState(false)
   const [isLoadingPolitics, setIsLoadingPolitics] = useState(false)
   const [isLoadingSports, setIsLoadingSports] = useState(false)
@@ -96,21 +96,21 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
     }
   }, [])
 
-  const fetchNewYorkTimesHealthStories = useCallback(async () => {
-    setIsLoadingHealth(true)
+  const fetchNewYorkTimesTechnologyStories = useCallback(async () => {
+    setIsLoadingTechnology(true)
     setError(null)
 
     try {
-      const response = await Api.get(`/health.json`, {
+      const response = await Api.get(`/technology.json`, {
         params: {
           'api-key': config.api.newYorkTimesApi.apiKey,
         },
       })
-      setHealthStories(response.data.results)
+      setTechnologyStories(response.data.results)
     } catch {
       setError('Error to fetching New York Times Stories')
     } finally {
-      setIsLoadingHealth(false)
+      setIsLoadingTechnology(false)
     }
   }, [])
 
@@ -170,7 +170,7 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
 
   useEffect(() => {
     fetchNewYorkTimesBusinessStories()
-    fetchNewYorkTimesHealthStories()
+    fetchNewYorkTimesTechnologyStories()
     fetchNewYorkTimesMoviesStories()
     fetchNewYorkTimesPoliticsStories()
     fetchNewYorkTimesSportsStories()
@@ -183,13 +183,13 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
         () => ({
           stories,
           businessStories,
-          healthStories,
+          technologyStories,
           moviesStories,
           politicsStories,
           sportsStories,
           isLoading,
           isLoadingBusiness,
-          isLoadingHealth,
+          isLoadingTechnology,
           isLoadingMovies,
           isLoadingPolitics,
           isLoadingSports,
@@ -199,13 +199,13 @@ export const NewYorkTimesProvider: React.FC<INewYorkTimesProps> = ({
         [
           stories,
           businessStories,
-          healthStories,
+          technologyStories,
           moviesStories,
           politicsStories,
           sportsStories,
           isLoading,
           isLoadingBusiness,
-          isLoadingHealth,
+          isLoadingTechnology,
           isLoadingMovies,
           isLoadingPolitics,
           isLoadingSports,
