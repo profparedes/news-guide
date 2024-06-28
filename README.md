@@ -40,7 +40,6 @@ yarn dev
 
 This will start the development server on port 3000. Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app.
 
-
 ## Contributions
 
 Contributions are welcome. Feel free to open an issue or make a pull request.
