@@ -5,7 +5,7 @@ import useTitle from 'hooks/useTitle'
 import { useNewYorkTimes } from 'context/NewYorkTimesContext'
 import Container from '@mui/material/Container'
 import Header from 'components/Header'
-import { Box, Typography } from '@mui/material'
+import { Box, Skeleton, Typography } from '@mui/material'
 import Button from 'components/Button'
 import useWindowSize from 'hooks/useWindowSize'
 import { FaWhatsapp } from 'react-icons/fa'
@@ -34,6 +34,7 @@ const Home: React.FC = () => {
     moviesStories,
     politicsStories,
     sportsStories,
+    isLoading,
     isLoadingBusiness,
     isLoadingTechnology,
     isLoadingMovies,
@@ -50,7 +51,7 @@ const Home: React.FC = () => {
 
   const lastedNewsMap = useMemo(
     () =>
-      stories
+      stories && !isLoading
         ? stories
             .map((story, i) => (
               <LatestNewsCard
@@ -67,8 +68,13 @@ const Home: React.FC = () => {
               />
             ))
             .slice(0, 5)
-        : [],
-    [gteMd, stories],
+        : Array.from({ length: 5 }).map((_, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Box paddingX={1} width={gteMd ? '20%' : '100%'} key={i}>
+              <Skeleton variant="rounded" width="100%" height={360} />
+            </Box>
+          )),
+    [gteMd, stories, isLoading],
   )
 
   return (
@@ -119,44 +125,49 @@ const Home: React.FC = () => {
       <CategoriesSection>
         <Container>
           <Box display="flex" flexDirection="column" gap={4}>
-            {!isLoadingBusiness && businessStories && (
+            {businessStories && (
               <CategoryCard
                 title="Business"
                 color="#42B073"
                 description="Latest market trends, economic insights, and corporate developments."
                 storiesData={businessStories}
+                loading={isLoadingBusiness}
               />
             )}
-            {!isLoadingTechnology && technologyStories && (
+            {technologyStories && (
               <CategoryCard
                 title="Science"
                 color="#24BEFF"
                 description="Explore groundbreaking discoveries and cutting-edge research in science today."
                 storiesData={technologyStories}
+                loading={isLoadingTechnology}
               />
             )}
-            {!isLoadingMovies && moviesStories && (
+            {moviesStories && (
               <CategoryCard
                 title="Movies"
                 color="#FF632D"
                 description="Discover the latest films, reviews, and entertainment news."
                 storiesData={moviesStories}
+                loading={isLoadingMovies}
               />
             )}
-            {!isLoadingPolitics && politicsStories && (
+            {politicsStories && (
               <CategoryCard
                 title="Politics"
                 color="#FFD400"
                 description="Insightful analysis and updates on global political developments and policies."
                 storiesData={politicsStories}
+                loading={isLoadingPolitics}
               />
             )}
-            {!isLoadingSports && sportsStories && (
+            {sportsStories && (
               <CategoryCard
                 title="Sports"
                 color="#9B836B"
                 description="Score updates, athlete profiles, and game highlights from around the world."
                 storiesData={sportsStories}
+                loading={isLoadingSports}
               />
             )}
           </Box>

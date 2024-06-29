@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { NewYorkTimesStoriesType } from 'Types/newYorkTimes'
 import { memo, useMemo } from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Skeleton, Typography } from '@mui/material'
 import Button from 'components/Button'
 import { format } from 'date-fns'
 import { IoIosArrowRoundForward } from 'react-icons/io'
@@ -20,6 +20,7 @@ interface ICategoryCardProps {
   description?: string
   storiesData?: NewYorkTimesStoriesType[]
   color?: string
+  loading?: boolean
 }
 
 const customPaging = (color: string) => () => <CustomDots borderColor={color} />
@@ -29,6 +30,7 @@ const CategoryCard: React.FC<ICategoryCardProps> = ({
   description,
   storiesData,
   color = '#42B073',
+  loading = false,
 }) => {
   const { gteMd } = useWindowSize()
 
@@ -45,7 +47,7 @@ const CategoryCard: React.FC<ICategoryCardProps> = ({
 
   const cardMap = useMemo(
     () =>
-      storiesData
+      storiesData && !loading
         ? storiesData
             .map((story) => (
               <div key={story?.url}>
@@ -87,8 +89,18 @@ const CategoryCard: React.FC<ICategoryCardProps> = ({
               </div>
             ))
             .slice(0, 3)
-        : [],
-    [storiesData, color],
+        : Array.from({ length: 3 }).map((_, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Box display="flex" flexDirection="column" gap={2} key={i}>
+              <Skeleton variant="rounded" width={200} height={128} />
+              <Skeleton variant="text" width={200} height={32} />
+              <Box display="flex" justifyContent="space-between">
+                <Skeleton variant="text" width={80} height={32} />
+                <Skeleton variant="circular" width={30} height={30} />
+              </Box>
+            </Box>
+          )),
+    [storiesData, color, loading],
   )
 
   return (
